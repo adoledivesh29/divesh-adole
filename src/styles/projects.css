@@ -52,6 +52,7 @@
 
 .project-stack-card {
     --stack-top: calc(84px + (var(--stack-index) * 18px));
+    --project-accent: var(--secondary);
     position: sticky;
     top: var(--stack-top);
     display: flex;
@@ -61,7 +62,7 @@
     border: 1px solid rgba(201, 203, 213, 0.18);
     border-radius: 8px;
     background:
-        linear-gradient(135deg, rgba(78, 255, 13, 0.06), transparent 38%),
+        linear-gradient(135deg, color-mix(in srgb, var(--project-accent) 14%, transparent), transparent 38%),
         #0d0f0d;
     box-shadow:
         0 34px 90px rgba(0, 0, 0, 0.52),
@@ -76,10 +77,10 @@
 
 .project-stack-card:hover,
 .project-stack-card:focus-visible {
-    border-color: rgba(78, 255, 13, 0.45);
+    border-color: color-mix(in srgb, var(--project-accent) 46%, transparent);
     box-shadow:
         0 40px 100px rgba(0, 0, 0, 0.58),
-        0 0 38px rgba(78, 255, 13, 0.07),
+        0 0 38px color-mix(in srgb, var(--project-accent) 16%, transparent),
         0 1px 0 rgba(255, 255, 255, 0.08) inset;
     outline: none;
 }
@@ -91,7 +92,7 @@
     right: 18px;
     bottom: -1px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(78, 255, 13, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--project-accent) 55%, transparent), transparent);
     opacity: 0.55;
 }
 
@@ -99,7 +100,7 @@
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 18% 16%, rgba(78, 255, 13, 0.11), transparent 28%),
+        radial-gradient(circle at 18% 16%, color-mix(in srgb, var(--project-accent) 20%, transparent), transparent 28%),
         linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 32%);
     opacity: 0;
     pointer-events: none;
@@ -113,8 +114,8 @@
     right: 22px;
     z-index: 2;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(78, 255, 13, 0.95), transparent);
-    box-shadow: 0 0 22px rgba(78, 255, 13, 0.45);
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--project-accent) 95%, white 5%), transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--project-accent) 45%, transparent);
     pointer-events: none;
 }
 
@@ -161,11 +162,16 @@
 
 .project-meta {
     margin-bottom: 1rem;
-    color: #4eff0d;
+    color: var(--project-accent);
     font-family: Inter-VariableFont_opsz;
     font-size: 0.95rem;
     letter-spacing: 0;
     opacity: 0.8;
+}
+
+.project-stack-card:hover .down h1,
+.project-stack-card:focus-visible .down h1 {
+    color: var(--project-accent);
 }
 
 .down h1 {

@@ -3,6 +3,8 @@ import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import b1 from '../../assets/images/projects/b1.png'
 import typerium from '../../assets/images/projects/Typerium.png'
 import WoodWave from '../../assets/images/projects/WoodWave.png'
+import gridMaster from '../../assets/images/projects/grid-master.png'
+import mpl from '../../assets/images/projects/mpl.png'
 import ShinyText from '../../custom/ShinyText'
 import { Edit, Search, Play, Link } from 'lucide-react';
 import { useMouse } from '../../hooks/useMouse'
@@ -111,7 +113,9 @@ export default function Projects() {
     const imageMap = {
         "/src/assets/images/projects/WoodWave.png": WoodWave,
         "/src/assets/images/projects/Typerium.png": typerium,
-        "/src/assets/images/projects/b1.png": b1
+        "/src/assets/images/projects/b1.png": b1,
+        "/src/assets/images/projects/grid-master.png": gridMaster,
+        "/src/assets/images/projects/mpl.png": mpl
     };
 
     return (

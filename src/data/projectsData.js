@@ -1,11 +1,11 @@
 const projectsData = [
     {
-        name: "WoodWave",
-        description: "An interactive 3D visualization of wooden wave patterns created with Three.js and WebGL shaders.",
-        imagePath: "/src/assets/images/projects/WoodWave.png",
-        projectUrl: "https://woodwave-demo.com",
-        technologies: ["Three.js", "WebGL", "JavaScript"],
-        year: 2023
+        name: "Mobile Premier League (MPL)",
+        description: "Mobile Premier League (MPL) is India’s leading skill-gaming platform that allows users to participate in free as well as paid competitions.",
+        imagePath: "/src/assets/images/projects/mpl.png",
+        projectUrl: "https://www.mplgaming.com/",
+        technologies: ["React.js", "Phaser", "Node.js", "Socket.io"],
+        year: 2024
     },
     {
         name: "Typerium",
@@ -16,20 +16,20 @@ const projectsData = [
         year: 2023
     },
     {
-        name: "Portfolio",
+        name: "Be1 Games",
         description: "A 3D interactive portfolio website built with Three.js featuring creative animations and project showcases.",
         imagePath: "/src/assets/images/projects/b1.png",
-        projectUrl: "https://grandlemar.com/pages/custom-made-suit",
-        technologies: ["Three.js", "React", "TailwindCSS"],
-        year: 2023
+        projectUrl: "https://be1games.com/",
+        technologies: ["Next.js", "Phaser", "Node.js", "Socket.io"],
+        year: 2024
     },
     {
-        name: "Portfolio",
-        description: "A 3D interactive portfolio website built with Three.js featuring creative animations and project showcases.",
-        imagePath: "/src/assets/images/projects/b1.png",
-        projectUrl: "https://portfolio-showcase.com",
-        technologies: ["Three.js", "React", "TailwindCSS"],
-        year: 2023
+        name: "GridMaster",
+        description: "Grid Master Live delivers an immersive F1 fantasy gaming experience with real-time scoring, team strategy, and competitive race-weekend action.",
+        imagePath: "/src/assets/images/projects/grid-master.png",
+        projectUrl: "https://gridmasterlive.com",
+        technologies: ["React.js", "Phaser", "Python", "Socket.io"],
+        year: 2026
     }
 ];
 

@@ -1,29 +1,39 @@
-// SmoothScroll.jsx
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 
 const SmoothScroll = () => {
     useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.2, // scroll speed
-            easing: (t) => 1 - Math.pow(1 - t, 3), // ease out cubic
-            smooth: true,
-            smoothTouch: false,
-        });
-
-        // expose globally
-        window.lenis = lenis;
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
+        if (window.lenis) {
+            window.lenis.destroy();
+            delete window.lenis;
         }
 
-        requestAnimationFrame(raf);
+        const lenis = new Lenis({
+            duration: 0.8,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
+            smoothWheel: true,
+            smoothTouch: false,
+            wheelMultiplier: 0.9,
+        });
+
+        let frameId = 0;
+
+        window.lenis = lenis;
+
+        const raf = (time) => {
+            lenis.raf(time);
+            frameId = window.requestAnimationFrame(raf);
+        };
+
+        frameId = window.requestAnimationFrame(raf);
 
         return () => {
+            window.cancelAnimationFrame(frameId);
             lenis.destroy();
-            delete window.lenis;
+
+            if (window.lenis === lenis) {
+                delete window.lenis;
+            }
         };
     }, []);
 
