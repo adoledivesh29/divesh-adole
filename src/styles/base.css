@@ -2,80 +2,87 @@
    base.css  —  fonts · tailwind · reset · tokens
    ───────────────────────────────────────────── */
 
-@font-face {
-    font-family: 'La-Gagliane';
-    src: url('../assets/fonts/La-Gagliane.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+    @font-face {
+        font-family: 'La-Gagliane';
+        src: url('../assets/fonts/La-Gagliane.otf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-@font-face {
-    font-family: 'AMS_Manthan';
-    src: url('../assets/fonts/AMS-Manthan-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+    @font-face {
+        font-family: 'AMS_Manthan';
+        src: url('../assets/fonts/AMS-Manthan-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-@font-face {
-    font-family: 'YesevaOne-Regular';
-    src: url('../assets/fonts/YesevaOne-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+    @font-face {
+        font-family: 'YesevaOne-Regular';
+        src: url('../assets/fonts/YesevaOne-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-@font-face {
-    font-family: 'Karla-VariableFont_wght';
-    src: url('../assets/fonts/Karla-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+    @font-face {
+        font-family: 'Karla-VariableFont_wght';
+        src: url('../assets/fonts/Karla-VariableFont_wght.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: none;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: none;
+    }
 
-body {
-    background-color: black;
-}
+    body {
+        background-color: black;
+        overflow: hidden;
+    }
 
-html.lenis,
-html.lenis body {
-    height: auto;
-}
+    @media (max-width: 760px) {
+        body {
+            overflow: auto !important;
+        }
+    }
 
-.lenis.lenis-smooth {
-    scroll-behavior: auto;
-}
+    html.lenis,
+    html.lenis body {
+        height: auto;
+    }
 
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
+    .lenis.lenis-smooth {
+        scroll-behavior: auto;
+    }
 
-/* CSS design tokens */
-:root {
-    --background: transparent;
-    --grey: #c9cbd5;
-    --primary: #4e29f0;
-    --primary-light: #725afc;
-    --secondary: #ffd100;
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
 
-    /* legacy navbar pill vars (kept for backward compat) */
-    --width: 400px;
-    --height: 70px;
-    --border-radius: var(--height);
+    /* CSS design tokens */
+    :root {
+        --background: transparent;
+        --grey: #c9cbd5;
+        --primary: #4e29f0;
+        --primary-light: #725afc;
+        --secondary: #ffd100;
 
-    /* gallery accordion */
-    --optionDefaultWidth: 10vw;
-    --optionDefaultHeight: 60vh;
-    --optionExpandedWidth: 25vw;
-    --optionMargin: 1vw;
-    --optionTransition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    --labelFontSize: 1.2vw;
-}
+        /* legacy navbar pill vars (kept for backward compat) */
+        --width: 400px;
+        --height: 70px;
+        --border-radius: var(--height);
+
+        /* gallery accordion */
+        --optionDefaultWidth: 10vw;
+        --optionDefaultHeight: 60vh;
+        --optionExpandedWidth: 25vw;
+        --optionMargin: 1vw;
+        --optionTransition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        --labelFontSize: 1.2vw;
+    }

@@ -11,33 +11,33 @@ import image5 from '../../assets/images/gallary/shivmandir.jpg'
 gsap.registerPlugin(ScrollTrigger);
 
 const options = [
-    { main: 'City Palace',   sub: 'Udaipur',        background: image1 },
-    { main: 'Jagmandir',     sub: 'Island Palace',   background: image2 },
-    { main: 'Lake Palace',   sub: '',                background: image3 },
-    { main: 'Polo Forest',   sub: '',                background: image4 },
-    { main: 'Shivmandir',    sub: '',                background: image5 },
+    { main: 'City Palace', sub: 'Udaipur', background: image1 },
+    { main: 'Jagmandir', sub: 'Island Palace', background: image2 },
+    { main: 'Lake Palace', sub: 'Udaipur', background: image3 },
+    { main: 'Polo Forest', sub: 'Gujarat', background: image4 },
+    { main: 'Shivmandir', sub: 'Udaipur', background: image5 },
 ];
 
 /* ── Modal ───────────────────────────────────────────────────────────── */
 function ImageModal({ item, onClose }) {
-    const overlayRef  = useRef(null);
-    const contentRef  = useRef(null);
+    const overlayRef = useRef(null);
+    const contentRef = useRef(null);
 
     // Animate in — expand FROM the card's screen rect TO the centered modal
     useEffect(() => {
-        const overlay  = overlayRef.current;
-        const content  = contentRef.current;
+        const overlay = overlayRef.current;
+        const content = contentRef.current;
         const { originRect } = item;
 
         // Where the modal content ended up after render (centered by flexbox)
         const contentRect = content.getBoundingClientRect();
 
         // Delta: how far the modal center is from the card center
-        const fromX = (originRect.left + originRect.width  / 2) - (contentRect.left + contentRect.width  / 2);
-        const fromY = (originRect.top  + originRect.height / 2) - (contentRect.top  + contentRect.height / 2);
+        const fromX = (originRect.left + originRect.width / 2) - (contentRect.left + contentRect.width / 2);
+        const fromY = (originRect.top + originRect.height / 2) - (contentRect.top + contentRect.height / 2);
 
         // Scale factor: card size relative to modal size
-        const fromScaleX = originRect.width  / contentRect.width;
+        const fromScaleX = originRect.width / contentRect.width;
         const fromScaleY = originRect.height / contentRect.height;
 
         const tl = gsap.timeline();
@@ -47,7 +47,7 @@ function ImageModal({ item, onClose }) {
             { opacity: 1, duration: 0.4, ease: 'power2.out' }
         ).fromTo(content,
             { x: fromX, y: fromY, scaleX: fromScaleX, scaleY: fromScaleY, borderRadius: '10px', opacity: 1 },
-            { x: 0,     y: 0,     scaleX: 1,           scaleY: 1,           borderRadius: '14px', duration: 0.55, ease: 'power3.out' },
+            { x: 0, y: 0, scaleX: 1, scaleY: 1, borderRadius: '14px', duration: 0.55, ease: 'power3.out' },
             0   // start at the same time as overlay fade
         );
 
@@ -64,15 +64,15 @@ function ImageModal({ item, onClose }) {
 
     // Animate out — shrink back TO the card's original position
     const handleClose = useCallback(() => {
-        const overlay     = overlayRef.current;
-        const content     = contentRef.current;
+        const overlay = overlayRef.current;
+        const content = contentRef.current;
         const { originRect } = item;
 
         const contentRect = content.getBoundingClientRect();
 
-        const toX      = (originRect.left + originRect.width  / 2) - (contentRect.left + contentRect.width  / 2);
-        const toY      = (originRect.top  + originRect.height / 2) - (contentRect.top  + contentRect.height / 2);
-        const toScaleX = originRect.width  / contentRect.width;
+        const toX = (originRect.left + originRect.width / 2) - (contentRect.left + contentRect.width / 2);
+        const toY = (originRect.top + originRect.height / 2) - (contentRect.top + contentRect.height / 2);
+        const toScaleX = originRect.width / contentRect.width;
         const toScaleY = originRect.height / contentRect.height;
 
         const tl = gsap.timeline({ onComplete: onClose });

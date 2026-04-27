@@ -266,3 +266,275 @@
         aspect-ratio: 1 / 1;
     }
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   GALLERY CAROUSEL  (mobile ≤ 420px)
+   ════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 420px) {
+    /* Section wrapper override */
+    .gallary {
+        margin-top: 80px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 5rem;
+    }
+
+    /* ── Carousel shell ─────────────────────────────────────────────── */
+    .gc-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 0;
+        margin-top: 3vh;
+    }
+
+    /* ── Slide track ───────────────────────────────────────────────── */
+    .gc-track {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+    /* ── Individual slide ──────────────────────────────────────────── */
+    .gc-slide {
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        border-radius: 20px;
+        overflow: hidden;
+        will-change: transform, opacity;
+    }
+
+    .gc-slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform: scale(1.06);
+        transition: transform 0.55s ease; /* smooth reset when leaving */
+    }
+
+    /* Ken Burns: active slide zooms in over the full interval */
+    .gc-slide--active .gc-slide-img {
+        animation: gcKenBurns 3.5s ease forwards;
+    }
+
+    @keyframes gcKenBurns {
+        from { transform: scale(1.06); }
+        to   { transform: scale(1.18); }
+    }
+
+    /* Gradient overlay */
+    .gc-slide-gradient {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%),
+            linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%);
+        pointer-events: none;
+    }
+
+    /* Label at bottom */
+    .gc-slide-label {
+        position: absolute;
+        bottom: 4.5rem;
+        left: 1.4rem;
+        right: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        pointer-events: none;
+    }
+
+    .gc-slide-main {
+        color: #fff;
+        font-family: 'PlayfairDisplay-VariableFont_wght', serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+        line-height: 1.1;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+
+    .gc-slide-sub {
+        color: #c9a84c;
+        font-family: 'Karla-VariableFont_wght', sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.9;
+    }
+
+    /* Tap hint */
+    .gc-tap-hint {
+        position: absolute;
+        top: 1rem;
+        right: 1.1rem;
+        color: rgba(255,255,255,0.55);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+
+    /* ── Arrows ─────────────────────────────────────────────────────── */
+    .gc-arrow {
+        position: absolute;
+        top: calc(50% - 2rem); /* center relative to gc-track aspect-ratio box */
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        border: 1px solid rgba(201,168,76,0.4);
+        background: rgba(0,0,0,0.45);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .gc-arrow:active {
+        background: rgba(201,168,76,0.25);
+    }
+
+    .gc-arrow--left  { left: 0.9rem; }
+    .gc-arrow--right { right: 0.9rem; }
+
+    /* ── Dot indicators ──────────────────────────────────────────────── */
+    .gc-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        margin-top: 1rem;
+    }
+
+    .gc-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        transition: background 0.3s, width 0.3s;
+    }
+
+    .gc-dot--active {
+        background: #c9a84c;
+        width: 22px;
+        border-radius: 3px;
+    }
+
+    /* ── Progress bar ────────────────────────────────────────────────── */
+    .gc-progress-bar {
+        height: 2px;
+        background: rgba(255,255,255,0.12);
+        margin: 0.6rem 1rem 0;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .gc-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #c9a84c, #e8cc7a);
+        border-radius: 2px;
+        animation: gcProgress 3.5s linear forwards;
+    }
+
+    @keyframes gcProgress {
+        from { width: 0%; }
+        to   { width: 100%; }
+    }
+
+    /* ── Modal (bottom sheet) ─────────────────────────────────────── */
+    .gc-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9500;
+        background: rgba(5,7,5,0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .gc-modal-sheet {
+        position: relative;
+        width: 100%;
+        max-height: 92dvh;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+        border: 1px solid rgba(201,168,76,0.2);
+        border-bottom: none;
+        box-shadow: 0 -20px 60px rgba(0,0,0,0.6);
+    }
+
+    .gc-modal-img {
+        width: 100%;
+        height: 65dvh;
+        object-fit: cover;
+        display: block;
+    }
+
+    .gc-modal-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.4rem 1.6rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .gc-modal-title {
+        color: #fff;
+        font-family: 'PlayfairDisplay-VariableFont_wght', serif;
+        font-size: clamp(1.3rem, 5vw, 1.7rem);
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .gc-modal-sub {
+        color: #c9a84c;
+        font-family: 'Karla-VariableFont_wght', sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.85;
+    }
+
+    .gc-modal-close {
+        position: absolute;
+        top: 0.85rem;
+        right: 0.85rem;
+        z-index: 10;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        border: 1px solid rgba(201,168,76,0.4);
+        background: rgba(0,0,0,0.55);
+        color: #fff;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(6px);
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .gc-modal-close:active {
+        background: rgba(201,168,76,0.25);
+        border-color: #c9a84c;
+    }
+}

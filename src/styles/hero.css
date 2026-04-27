@@ -52,14 +52,17 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 480px) {
+@media (max-width: 760px) {
     .hero-section {
-        max-height: 30vh;
+        height: 90vh;
+        min-height: 90vh;
+        margin-top: 56px;
+        max-height: none;
     }
 
     .left {
         font-size: 30px;
-        top: 30%;
+        top: 75%;
     }
 
     .right {

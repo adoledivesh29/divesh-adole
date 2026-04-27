@@ -20,6 +20,7 @@ import SkillMarquee from './components/three/SkillMarquee.jsx'
 const App = () => {
 
     const [loading, setLoading] = useState(true);
+    const isMobile = window.innerWidth < 420;
 
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 5000);
@@ -45,7 +46,7 @@ const App = () => {
                         {/* <Timeline /> */}
                         <Contact />
                         <Footer />
-                        <SmoothFollower />
+                        {!isMobile && <SmoothFollower />}
                     </div >
                 }
             </CursorProvider>

@@ -40,34 +40,20 @@ const Loader = ({ loading }) => {
       delay: 0.2, // slight offset for visual interest
     });
 
-    // After 3 seconds, fade out the loading page
     gsap.delayedCall(3, () => {
       gsap.to(loaderRef.current, {
         opacity: 0,
-        duration: 0.8,
+        duration: 0.5,
         ease: "power2.inOut",
         onComplete: () => setVisible(false),
       });
     });
 
-    // Handle external loading prop changes
-    if (!loading) {
-      pathAnim1.pause();
-      pathAnim2.pause();
-
-      gsap.to(loaderRef.current, {
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
-        onComplete: () => setVisible(false),
-      });
-    }
-
     return () => {
       pathAnim1.kill();
       pathAnim2.kill();
     };
-  }, [loading]);
+  }, []);
 
   if (!visible) return null;
 

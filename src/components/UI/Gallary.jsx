@@ -1,5 +1,8 @@
 import React from 'react'
 import OptionsContainer from './OptionsContainer'
+import GalleryCarousel from './GalleryCarousel'
+
+const isMobile = window.innerWidth < 420;
 
 const Gallary = () => {
     return (
@@ -13,7 +16,8 @@ const Gallary = () => {
                 </div>
             </div>
             <h2 className='project-subTitle'>Creative snapshots that reflect my perspective and passion for photography.</h2>
-            <OptionsContainer />
+
+            {isMobile ? <GalleryCarousel /> : <OptionsContainer />}
         </div>
     )
 }

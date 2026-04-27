@@ -313,49 +313,314 @@
     }
 }
 
+/* ═══════════════════════════════════════════════════════
+   Mobile footer  ≤ 640px
+   Matches reference design: centered, clean, gold-on-dark
+   ═══════════════════════════════════════════════════════ */
 @media (max-width: 640px) {
+
+    /* ── Shell ─────────────────────────────────────────── */
     .footer-shell {
-        padding: 1.5rem 1rem 1.5rem;
-        border-radius: 1.4rem 1.4rem 0 0;
+        padding: 0;
+        border-radius: 2.2rem 2.2rem 0 0;
+        background:
+            radial-gradient(ellipse 120% 70% at 50% 60%,
+                rgba(180, 120, 5, 0.38) 0%,
+                rgba(120, 75, 0, 0.18) 45%,
+                transparent 72%),
+            #050505;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: none;
+        overflow: hidden;
     }
 
+    /* ── Giant wordmark — full-width, centered ─────────── */
     .footer-wordmark {
-        font-size: clamp(5.4rem, 18vw, 8rem);
-        margin-top: 0;
+        width: 100%;
+        text-align: center;
+        font-size: clamp(4.4rem, 23vw, 7rem);
+        line-height: 1;
+        margin: 0;
+        padding: 2rem 1rem 0;
+        letter-spacing: -0.04em;
+        color: #fffdf8;
+        /* Crisp white with no clip, matching the image */
+        -webkit-text-fill-color: unset;
+        background: none;
+        text-shadow:
+            0 0 60px rgba(202, 151, 10, 0.15),
+            0 2px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    /* ── Brand section — centered, no card ─────────────── */
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.6rem 2rem 0;
+        margin: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+        backdrop-filter: none;
     }
 
     .footer-brand__copy {
-        font-size: 0.98rem;
+        text-align: center;
+        font-size: 1rem;
         line-height: 1.65;
+        color: rgba(248, 243, 233, 0.82);
+        letter-spacing: 0;
     }
 
+    /* ── Social icons — circular, centered ─────────────── */
     .footer-socials {
-        gap: 0.9rem;
-        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.6rem;
+        justify-content: center;
     }
 
-    .footer-socials a,
-    .footer-contact__icon {
-        width: 3.35rem;
-        height: 3.35rem;
-        border-radius: 0.95rem;
+    .footer-socials a {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        border: 1.5px solid rgba(240, 194, 77, 0.55);
+        background: transparent;
+        color: #f0c24d;
+        box-shadow: none;
+        transition:
+            transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+            border-color 0.2s ease,
+            background 0.2s ease;
     }
 
-    .footer-socials svg,
-    .footer-contact__icon svg {
-        width: 1.4rem;
-        height: 1.4rem;
+    .footer-socials a:active {
+        transform: scale(0.88);
+        background: rgba(240, 194, 77, 0.1);
+        border-color: #f0c24d;
     }
 
-    .footer-nav__links,
+    .footer-socials svg {
+        width: 1.35rem;
+        height: 1.35rem;
+        fill: #f0c24d;
+    }
+
+    /* ── Navigation — no card, centered, divider lines ─── */
+    .footer-nav {
+        margin: 2rem 0 0;
+        padding: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    /* Hide the "Navigation" heading — not in reference */
+    .footer-nav > .footer-heading,
+    .footer-nav > .footer-heading__underline {
+        display: none;
+    }
+
+    .footer-nav__links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .footer-nav__link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+        color: rgba(248, 243, 233, 0.88);
+        background: none;
+        border: none;
+        border-radius: 0;
+        letter-spacing: 0.01em;
+        transition: color 0.2s ease;
+    }
+
+    /* Short centered divider under each nav link */
+    .footer-nav__link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+        height: 1px;
+        background: rgba(180, 130, 10, 0.35);
+    }
+
+
+
+    .footer-nav__link:active {
+        color: #f0c24d;
+        background: rgba(240, 194, 77, 0.04);
+        transform: none;
+    }
+
+    /* Hide arrows — not visible in reference */
+    .footer-nav__arrow {
+        display: none;
+    }
+
+    /* ── Contact section — centered, no card ───────────── */
+    .footer-contact {
+        padding: 1.8rem 2rem 0;
+        margin: 2rem 0 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer-contact::before {
+        display: none;
+    }
+
+    /* Gold "Get in Touch" heading — centered */
+    .footer-contact > .footer-heading {
+        display: block;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: none;
+        color: #f0c24d;
+        text-align: center;
+    }
+
+    .footer-contact > .footer-heading__underline {
+        display: none;
+    }
+
     .footer-contact__list {
-        margin-top: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        margin-top: 1.3rem;
+        width: 100%;
+        align-items: flex-start;
+        padding: 0 0.5rem;
     }
 
-    .footer-contact__item,
-    .footer-nav__link,
-    .footer-bottom__copyright,
-    .footer-bottom__note {
+    .footer-contact__item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
         font-size: 0.95rem;
+        color: rgba(248, 243, 233, 0.85);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        word-break: break-word;
+    }
+
+    .footer-contact__item:active {
+        color: #f0c24d;
+        background: none;
+        border-color: transparent;
+        transform: none;
+    }
+
+    /* Icon — small, no box, just the svg in gold ────────── */
+    .footer-contact__icon {
+        width: auto;
+        height: auto;
+        border-radius: 0;
+        border: none;
+        background: none;
+        flex: 0 0 auto;
+        color: #f0c24d;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-contact__icon svg,
+    .footer-socials svg,
+    .footer-contact__icon svg,
+    .footer-nav__arrow svg,
+    .footer-bottom__spark svg {
+        fill: currentColor;
+    }
+
+    .footer-contact__icon svg {
+        width: 1.3rem;
+        height: 1.3rem;
+        fill: #f0c24d;
+    }
+
+    /* ── Bottom bar — centered, minimal ────────────────── */
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        margin: 2.4rem 0 0;
+        padding: 1.4rem 1.5rem 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom__copyright {
+        font-size: 0.82rem;
+        color: rgba(248, 243, 233, 0.45);
+        letter-spacing: 0;
+    }
+
+    /* "Let's build…" — plain inline row, no pill */
+    .footer-bottom__note {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        border: none;
+        font-size: 0.88rem;
+        color: rgba(248, 243, 233, 0.72);
+        letter-spacing: 0;
+    }
+
+    .footer-bottom__spark {
+        color: #f0c24d;
+        display: inline-flex;
+    }
+
+    .footer-bottom__spark svg {
+        width: 1.05rem;
+        height: 1.05rem;
+        fill: #f0c24d;
+    }
+
+    /* ── Glow ──────────────────────────────────────────── */
+    .footer-glow {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 100%;
+        height: 60vh;
+        transform: translateX(-50%);
+        background: radial-gradient(ellipse 90% 55% at 50% 90%,
+            rgba(180, 120, 5, 0.3),
+            transparent 75%);
+        pointer-events: none;
+        z-index: 0;
     }
 }

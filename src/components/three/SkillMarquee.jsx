@@ -11,12 +11,22 @@ const words = [
   'Open Source',
 ];
 
-const LOOP_DURATION = 10;
-const CHAR_DURATION = 3;
-const SHATTER_X_RANGE = 400;
-const SHATTER_Y_RANGE = 800;
-const SHATTER_ROTATION_RANGE = 50;
-const REVEAL_TRIGGER_RATIO = 1;
+// const LOOP_DURATION = 10;
+// const CHAR_DURATION = 3;
+// const SHATTER_X_RANGE = 400;
+// const SHATTER_Y_RANGE = 800;
+// const SHATTER_ROTATION_RANGE = 50;
+// const REVEAL_TRIGGER_RATIO = 1;
+
+
+const isMobile = window.innerWidth < 420;
+
+const LOOP_DURATION = isMobile ? 14 : 10;
+const CHAR_DURATION = isMobile ? 2 : 3;
+const SHATTER_X_RANGE = isMobile ? 50 : 400;
+const SHATTER_Y_RANGE = isMobile ? 100 : 800;
+const SHATTER_ROTATION_RANGE = isMobile ? 5 : 50;
+const REVEAL_TRIGGER_RATIO = isMobile ? 1 : 1;
 
 const SkillMarquee = () => {
   const wrapperRef = useRef(null);

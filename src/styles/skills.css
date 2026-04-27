@@ -133,3 +133,21 @@
     font-size: 3rem;
     letter-spacing: 0.5rem;
 }
+
+@media (max-width: 420px) {
+
+    .marquees-wrapper {
+        /* height: 5rem; */
+        margin-bottom: 5rem !important;
+    }
+
+}
+
+/* ── Mobile: smaller skill title text ≤ 640px ─────────── */
+@media (max-width: 640px) {
+    .skill-title .about-eyebrow {
+        font-size: 1.8rem;
+        letter-spacing: 0.25rem;
+        padding-left: 0.25rem;
+    }
+}

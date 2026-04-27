@@ -54,11 +54,17 @@ const gridData = [
 ];
 
 
+// Flat ordered list of every skill for the mobile auto-cycle
+const allSkills = gridData.flat().map((item) => item.tech);
+
 const Skills = () => {
     const [currentSkill, setCurrentSkill] = useState("Skills");
-    const leaveTimeout = useRef(null);
+    const leaveTimeout  = useRef(null);
     const skillTitleRef = useRef(null);
     const eyebrowRef    = useRef(null);
+    const sectionRef    = useRef(null);
+    const autoIndexRef  = useRef(0);
+    const autoInterval  = useRef(null);
 
     const handleMouseEnter = (skill) => {
         if (leaveTimeout.current) {
@@ -79,6 +85,45 @@ const Skills = () => {
             setCurrentSkill("Skills");
         }, 100);
     };
+
+    // ── Mobile auto-cycle: advances skill name every 1.2 s while in view ──
+    useEffect(() => {
+        const isMobile = () => window.innerWidth <= 640;
+        if (!isMobile()) return;
+
+        const startCycle = () => {
+            if (autoInterval.current) return; // already running
+            autoInterval.current = setInterval(() => {
+                autoIndexRef.current = (autoIndexRef.current + 1) % allSkills.length;
+                setCurrentSkill(allSkills[autoIndexRef.current]);
+            }, 2000);
+        };
+
+        const stopCycle = () => {
+            clearInterval(autoInterval.current);
+            autoInterval.current = null;
+            setCurrentSkill('Skills');
+        };
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    startCycle();
+                } else {
+                    stopCycle();
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        const section = sectionRef.current;
+        if (section) observer.observe(section);
+
+        return () => {
+            observer.disconnect();
+            stopCycle();
+        };
+    }, []);
 
     // Magnetic-pull char animation on every skill change
     useEffect(() => {
@@ -115,14 +160,14 @@ const Skills = () => {
 
     return (
         <>
-            <div id="skills" className="skills">
+            <div id="skills" className="skills" ref={sectionRef}>
                 <div className="skills-container" id="container">
                     {gridData.map((column, colIndex) => (
                         <div className="column" style={{ '--column': colIndex + 2 }} key={colIndex}>
                             {column.map((item, itemIndex) => (
                                 <div
                                     key={itemIndex}
-                                    className="hexagon"
+                                    className={`hexagon${item.tech === currentSkill ? ' hexagon--active' : ''}`}
                                     style={{
                                         '--index': item.index,
                                     }}
